@@ -1,0 +1,22 @@
+<!--
+	*index.html
+	*author: Manivannan R
+	*project: Speedometer
+-->
+<html>
+<head>
+<link href="css/speedometer.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<input id="myValues" />
+
+	<br>
+	<input id="myValues2" />
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/speedometer.js"></script>
+<script type="text/javascript">
+	$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});
+	$("#myValues2").myfunc({divFact:30});
+</script>
+</html>
