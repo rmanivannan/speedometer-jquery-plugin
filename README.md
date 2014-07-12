@@ -35,6 +35,7 @@ This component meant to create the speedometer with various divisions and start 
 
 ###Configuration Options:
 
+``` 
 * maxVal              /**Max value of the meter*/
 * divFact             /**Division value of the meter*/
 * dangerLevel         /**more than this leval, color will be red*/
@@ -55,3 +56,4 @@ This component meant to create the speedometer with various divisions and start 
 * midNobH             /**indicator mid nob height*/
 * noOfSmallDiv        /**no of small div between main div*/
 * eventListenerType   /**no of small div between main div*/
+``` 
