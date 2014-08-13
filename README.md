@@ -11,6 +11,9 @@ This component meant to create the speedometer with various divisions and start 
 
 3] Call the spedometer method 'myfunc' as like '$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});'
 
+###Demo URL
+http://rmanivannan.github.io/demos/speedometer-reusable/
+
 ### Example Usage
 
 ```  
