@@ -161,8 +161,8 @@ $.fn.myfunc = function (userPref) {
       "-o-transform"      :'rotate('+speedInDeg+'deg)'
     });
     
-    centerval = speed *  self.defaultProperty.multiplier;
-    self.parentElem.find(".speedPosition").html(centerval + "<br />" + self.defaultProperty.gagueLabel );
+    var centerVal = speed *  self.defaultProperty.multiplier;
+    self.parentElem.find(".speedPosition").html(centerVal + "<br />" + self.defaultProperty.gagueLabel );
     
     self.parentElem.find(".envelope .nob,.envelope .numb").removeClass("bright");
     for(var i=0; i<=noOfDev; i++){
