@@ -25,7 +25,9 @@ $.fn.myfunc = function (userPref) {
     midNobW             : 10,          /**indicator mid nob width*/
     midNobH             : 3,           /**indicator mid nob height*/
     noOfSmallDiv        : 2,           /**no of small div between main div*/
-    eventListenerType   : 'change',    /**no of small div between main div*/
+    eventListenerType   : 'change',    /**type of event listener*/
+    multiplier          : 1,	       /**Center value multiplier e.g. 1 x 1000 RPM*/	
+    gagueLabel   	: 'km/h'       /**Label on guage Face*/	
   }
   if(typeof userPref === 'object')
   for (var prop in userPref)this.defaultProperty[prop] = userPref[prop];
@@ -158,7 +160,9 @@ $.fn.myfunc = function (userPref) {
       "-moz-transform"    :'rotate('+speedInDeg+'deg)',
       "-o-transform"      :'rotate('+speedInDeg+'deg)'
     });
-    self.parentElem.find(".speedPosition").html(speed);
+    
+    centerval = speed *  self.defaultProperty.multiplier;
+    self.parentElem.find(".speedPosition").html(centerval + "<br />" + self.defaultProperty.gagueLabel );
     
     self.parentElem.find(".envelope .nob,.envelope .numb").removeClass("bright");
     for(var i=0; i<=noOfDev; i++){
