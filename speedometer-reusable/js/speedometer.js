@@ -176,4 +176,5 @@ $.fn.myfunc = function (userPref) {
   }
   this.creatHtmlsElecments();
   $(this).bind(this.defaultProperty.eventListenerType,this.changePosition);
+  return this;
 }
