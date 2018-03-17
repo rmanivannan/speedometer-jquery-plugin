@@ -11,7 +11,7 @@ This component meant to create the speedometer with various divisions and start 
 
 3] Call the spedometer method 'myfunc' as like '$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});'
 
-###Demo URL
+### Demo URL
 http://rmanivannan.github.io/demos/speedometer-reusable/
 
 ### Example Usage
@@ -36,7 +36,7 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
 
 =========================================
 
-###Configuration Options:
+### Configuration Options:
 
 ``` 
 * maxVal              /**Max value of the meter*/
