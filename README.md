@@ -3,7 +3,7 @@ Speedometer JQuery Plugin
 
 This component meant to create the speedometer with various divisions and start / end / danger ant etc point value.
 
-##How to add this component in your app?
+## How to add this component in your app?
 
 1] Add 'speedometer.js' & 'speedometer.css' into your project js and css folder.
 
