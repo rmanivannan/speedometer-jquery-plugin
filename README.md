@@ -28,8 +28,8 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
   <script src="js/jquery.js"></script>
   <script src="js/speedometer.js"></script>
   <script type="text/javascript">
-  	$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});
-  	$("#myValues2").myfunc({divFact:30});
+  	$("#myValues").speedometer({divFact:10,eventListenerType:'keyup'});
+  	$("#myValues2").speedometer({divFact:30});
   </script>
 </html>
 ```
