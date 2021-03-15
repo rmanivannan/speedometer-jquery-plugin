@@ -3,7 +3,7 @@
 	*author: Manivannan R
 	*project: Speedometer
 */
-$.fn.myfunc = function (userPref) {
+$.fn.speedometer = function (userPref) {
   var self = this;
   this.defaultProperty = {
     maxVal              : 180,         /**Max value of the meter*/
