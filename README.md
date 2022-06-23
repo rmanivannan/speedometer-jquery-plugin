@@ -7,7 +7,7 @@ This component meant to create the speedometer with various divisions and start 
 
 1] Add 'speedometer.js' & 'speedometer.css' into your project js and css folder.
 
-2] Add the '<input id="myValues" />' on to your html file with required ID attributs
+2] Add the `<input id="myValues" />` on to your html file with required ID attributs
 
 3] Call the spedometer method 'myfunc' as like '$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});'
 
