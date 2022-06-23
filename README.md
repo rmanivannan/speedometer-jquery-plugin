@@ -9,7 +9,7 @@ This component meant to create the speedometer with various divisions and start 
 
 2] Add the `<input id="myValues" />` on to your html file with required ID attributs
 
-3] Call the spedometer method 'myfunc' as like '$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});'
+3] Call the spedometer method 'myfunc' as like `$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});`
 
 ### Demo URL
 http://rmanivannan.github.io/demos/speedometer-reusable/
