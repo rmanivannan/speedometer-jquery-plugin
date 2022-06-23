@@ -30,8 +30,8 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
   <script type="text/javascript">
   	$("#myValues").speedometer({divFact:10,eventListenerType:'keyup'});
     
-    var speedoMeter2 = $("#myValues2").speedometer({divFact:30});
-	  speedoMeter2.setPosition(40);
+  	var speedoMeter2 = $("#myValues2").speedometer({divFact:30});
+  	speedoMeter2.setPosition(40);
     
   </script>
 </html>
