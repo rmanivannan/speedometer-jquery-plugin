@@ -60,6 +60,6 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
 * midNobW             /**indicator mid nob width*/
 * midNobH             /**indicator mid nob height*/
 * noOfSmallDiv        /**no of small div between main div*/
-* eventListenerType   /**no of small div between main div*/
+* eventListenerType   /**type of event listener*/
 * initVal             /**Initial value*/
 ``` 
