@@ -29,7 +29,10 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
   <script src="js/speedometer.js"></script>
   <script type="text/javascript">
   	$("#myValues").speedometer({divFact:10,eventListenerType:'keyup'});
-  	$("#myValues2").speedometer({divFact:30});
+    
+    var speedoMeter2 = $("#myValues2").speedometer({divFact:30});
+	  speedoMeter2.setPosition(40);
+    
   </script>
 </html>
 ```
@@ -59,4 +62,5 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
 * midNobH             /**indicator mid nob height*/
 * noOfSmallDiv        /**no of small div between main div*/
 * eventListenerType   /**no of small div between main div*/
+* initVal             /**Initial value*/
 ``` 
