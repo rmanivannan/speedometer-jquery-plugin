@@ -27,7 +27,8 @@ $.fn.speedometer = function (userPref) {
     noOfSmallDiv        : 2,           /**no of small div between main div*/
     eventListenerType   : 'change',    /**type of event listener*/
     multiplier          : 1,	       /**Center value multiplier e.g. 1 x 1000 RPM*/	
-    gagueLabel   	: 'km/h'       /**Label on guage Face*/	
+    gagueLabel   	: 'km/h',      /**Label on guage Face*/	
+    initVal             : 0            /**Initial value*/
   }
   if(typeof userPref === 'object')
   for (var prop in userPref)this.defaultProperty[prop] = userPref[prop];
@@ -143,9 +144,12 @@ $.fn.speedometer = function (userPref) {
 
     this.parentElem.find(".envelope").append(speedNobe+tempDiv);
   }
-  this.changePosition = function (){   
-    console.log($(this).val())
+  this.changePositionEventListener = function (){
     var speed = $(this).val();
+    self.setPosition(speed);
+  }
+  this.setPosition = function (speed){   
+    console.log(speed);
     if(speed > self.defaultProperty.maxVal){
       speed = self.defaultProperty.maxVal;
     }
@@ -175,6 +179,7 @@ $.fn.speedometer = function (userPref) {
     }
   }
   this.creatHtmlsElecments();
-  $(this).bind(this.defaultProperty.eventListenerType,this.changePosition);
+  $(this).bind(this.defaultProperty.eventListenerType,this.changePositionEventListener);
+  this.setPosition(this.defaultProperty.initVal);
   return this;
 }
