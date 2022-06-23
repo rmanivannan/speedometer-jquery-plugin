@@ -37,7 +37,6 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
 </html>
 ```
 
-=========================================
 
 ### Configuration Options:
 
