@@ -46,9 +46,12 @@ function speedometer(userPref){
     speedValTxtColor    : '#fff',             /**Center speed value color */
     speedArrowColor     : '#48a3cb',          /**Speed indicator arrow color */
     nobNumbColor        : '#eee',             /**Indicator Nob number color around circle */
+  };
+  if(typeof userPref === 'object'){
+    for (var prop in userPref) {
+      this.speedometerProperty[prop] = userPref[prop];
+    }
   }
-  if(typeof userPref === 'object')
-  for (var prop in userPref)this.speedometerProperty[prop] = userPref[prop];
   
   this.noOfDev = this.speedometerProperty.maxVal/this.speedometerProperty.divFact;
 
@@ -57,7 +60,7 @@ function speedometer(userPref){
   this.speedValueInNumeric = null;
   this.speedNobNumbHolder = [];
 
-  this.creatHtmlsElecments();
+  this._creatHtmlsElecments();
   this.setPosition(this.speedometerProperty.initVal);
 }
 
@@ -116,28 +119,30 @@ speedometer.prototype._createElm = function(metedata) {
 
   // add inner elemts recursively 
   if (metedata.children) {
-      for (var i in metedata.children) {
-          var chaild = this._createElm(metedata.children[i]);
-          chaild && $elm.append(chaild);
+      for (var j in metedata.children) {
+          var chaild = this._createElm(metedata.children[j]);
+          if(chaild){
+            $elm.append(chaild);
+          }
       }
   }
 
   //TODO : Event handlers
 
   return $elm;
-}
+};
 
 speedometer.prototype._addClass = function (elm, className){
   var newClass = elm.getAttribute('class').replace(new RegExp(className, 'g'), '') + ' ' + className;
   elm.setAttribute('class', newClass);
-}
+};
 
 speedometer.prototype._removeClass = function (elm, className){
   var newClass = elm.getAttribute('class').replace(new RegExp(className, 'g'), '');
   elm.setAttribute('class', newClass);
-}
+};
 
-speedometer.prototype.creatHtmlsElecments = function(){
+speedometer.prototype._creatHtmlsElecments = function(){
   this.elm = this._createElm({
     elmType: 'div',
     attrs:{
@@ -145,10 +150,11 @@ speedometer.prototype.creatHtmlsElecments = function(){
       class: 'speedometer'
     }
   });
-  this.setCssProperty();
-  this.createIndicators();
-}
-speedometer.prototype.setCssProperty = function() {
+  this._setCssProperty();
+  this._createIndicators();
+};
+
+speedometer.prototype._setCssProperty = function() {
   
   var speedoWH       = this.speedometerProperty.edgeRadius*2,
   speedNobeTop       = this.speedometerProperty.edgeRadius - this.speedometerProperty.speedNobeH/2,
@@ -228,16 +234,12 @@ speedometer.prototype.setCssProperty = function() {
   });
 
   this.elm.append(styleElm);    
-}
+};
 
-speedometer.prototype.createIndicators = function(){
+speedometer.prototype._createIndicators = function(){
   var divDeg = this.speedometerProperty.maxDeg/this.noOfDev,
-  nobNumbers    = '',
-  induCatorLinesPosLeft,induCatorLinesPosTop,induCatorNumbPosLeft,induCatorNumbPosTop;
-
-  var envelopeElm = this.elm;
-
-  var tempDiv = '';
+  induCatorLinesPosLeft,induCatorLinesPosTop,induCatorNumbPosLeft,induCatorNumbPosTop,
+  envelopeElm = this.elm;
 
   for(var i=0; i<=this.noOfDev; i++) {
     var curDig = this.speedometerProperty.initDeg + i*divDeg;
@@ -317,7 +319,7 @@ speedometer.prototype.createIndicators = function(){
   envelopeElm.append(this.speedPointerArrow);
   envelopeElm.append(this.speedValueInNumeric);
   
-}
+};
 
 speedometer.prototype.setPosition = function (speed){   
 
@@ -327,10 +329,12 @@ speedometer.prototype.setPosition = function (speed){
   if(speed < 0 || isNaN(speed)){
     speed = 0;
   }
-  speedInDeg = (this.speedometerProperty.maxDeg/this.speedometerProperty.maxVal)*speed + this.speedometerProperty.initDeg;
+  var speedInDeg = (this.speedometerProperty.maxDeg/this.speedometerProperty.maxVal)*speed + this.speedometerProperty.initDeg;
   
+  // Set Speed arrow indigator position
   this.speedPointerArrow.style.transform = 'rotate('+speedInDeg+'deg)';
   
+  // Set Speed value at the center of speedometer
   var centerVal = speed *  this.speedometerProperty.multiplier;
   this.speedValueInNumeric.innerHTML = centerVal + "<br />" + this.speedometerProperty.gagueLabel;
 
@@ -345,4 +349,4 @@ speedometer.prototype.setPosition = function (speed){
       this._removeClass(speedNobNumb.numb, 'bright');
     }
   }
-}
+};
