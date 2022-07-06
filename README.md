@@ -42,7 +42,7 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
   </body>
   <script src="js/speedometer.js"></script>
   <script type="text/javascript">
-  	var speedoMeter1 = new speedometer({
+    var speedoMeter1 = new speedometer({
       divFact:10, 
       initVal:30, 
 
@@ -56,6 +56,10 @@ http://rmanivannan.github.io/demos/speedometer-reusable/
     
     document.getElementById('speedometer-1').innerHTML = '';
     document.getElementById('speedometer-1').append(speedoMeter1.elm);
+    
+    // Change Speed Value
+    speedoMeter1.setPosition(40);
+    
   </script>
 </html>
 ```
