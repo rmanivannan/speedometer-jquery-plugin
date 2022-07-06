@@ -15,7 +15,7 @@
     <td>
 <pre>
 Apply Default Config   
-------------------------     
+------------------------           
 
 {}
 
@@ -35,7 +35,7 @@ Apply Default Config
     <td>
 <pre>
 Apply Config - 1  
---------------------   
+--------------------               
 
 {
   divFact:10, 
@@ -111,7 +111,7 @@ Apply Config - 2
   }
   
   defaultConfig.onclick = function(e){
-    speedoMeter1 = new speedometer({});
+    speedoMeter1 = new speedometer({initVal:speedoMeterInputRange.value});
     document.getElementById('speedometer-1').innerHTML = '';
     document.getElementById('speedometer-1').append(speedoMeter1.elm);
   }
@@ -120,7 +120,7 @@ Apply Config - 2
     speedoMeter1 = new speedometer({
     
       divFact:10, 
-      initVal:30, 
+      initVal:speedoMeterInputRange.value, 
 
       edgeRadius: 300, 
       indicatorRadius: 280, 
@@ -139,6 +139,8 @@ Apply Config - 2
       divFact:20, 
       maxVal: 240,
 
+      initVal:speedoMeterInputRange.value,
+
       dangerColor: 'green',
       bgColor: '#aaa',
       
@@ -155,4 +157,3 @@ Apply Config - 2
   
 </script>
 </html>
-    
