@@ -1,4 +1,4 @@
-Speedometer JQuery Plugin
+Speedometer Javascript Plugin
 =======================================
 
 This component meant to create the speedometer with various divisions and start / end / danger ant etc point value.
