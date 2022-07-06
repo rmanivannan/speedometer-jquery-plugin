@@ -3,8 +3,10 @@ Speedometer Javascript Plugin
 
 This component meant to create the speedometer with various divisions and start / end / danger ant etc point value.
 
-## How to add this component in your app?
+### Demo URL
+http://rmanivannan.github.io/demos/speedometer-reusable/
 
+## How to add this component in your app?
 1] Add 'speedometer.js' & 'speedometer.css' into your project js and css folder.
 
 2] Add the `<div id="speedometer-1"></div>` on to your html file with required ID attributs
@@ -26,9 +28,6 @@ This component meant to create the speedometer with various divisions and start 
     document.getElementById('speedometer-1').innerHTML = '';
     document.getElementById('speedometer-1').append(speedoMeter1.elm);
 ```
-
-### Demo URL
-http://rmanivannan.github.io/demos/speedometer-reusable/
 
 ### Example Usage
 
