@@ -5,7 +5,7 @@
 */
 
 function speedometer(userPref){
-  this.speedometerProperty = {
+  this._speedometerProperty = {
     id                  : 'speedometer-cnt-' + Math.floor(Math.random() * 100000) + 1,  
                                               /**Speedometer container id*/
     maxVal              : 180,                /**Max value of the meter*/
@@ -49,19 +49,19 @@ function speedometer(userPref){
   };
   if(typeof userPref === 'object'){
     for (var prop in userPref) {
-      this.speedometerProperty[prop] = userPref[prop];
+      this._speedometerProperty[prop] = userPref[prop];
     }
   }
   
-  this.noOfDev = this.speedometerProperty.maxVal/this.speedometerProperty.divFact;
-
-  this.speedPointerArrow = null;
   this.elm = null;
-  this.speedValueInNumeric = null;
-  this.speedNobNumbHolder = [];
+  
+  this._noOfDev = this._speedometerProperty.maxVal/this._speedometerProperty.divFact;
+  this._speedPointerArrow = null;
+  this._speedValueInNumeric = null;
+  this._speedNobNumbHolder = [];
 
   this._creatHtmlsElecments();
-  this.setPosition(this.speedometerProperty.initVal);
+  this.setPosition(this._speedometerProperty.initVal);
 }
 
 // Create Dom elments
@@ -146,7 +146,7 @@ speedometer.prototype._creatHtmlsElecments = function(){
   this.elm = this._createElm({
     elmType: 'div',
     attrs:{
-      id: this.speedometerProperty.id,
+      id: this._speedometerProperty.id,
       class: 'speedometer'
     }
   });
@@ -156,19 +156,19 @@ speedometer.prototype._creatHtmlsElecments = function(){
 
 speedometer.prototype._setCssProperty = function() {
   
-  var speedoWH       = this.speedometerProperty.edgeRadius*2,
-  speedNobeTop       = this.speedometerProperty.edgeRadius - this.speedometerProperty.speedNobeH/2,
-  speedNobeAngle     = this.speedometerProperty.initDeg,
-  speedPositionTxtTL = this.speedometerProperty.edgeRadius - this.speedometerProperty.speedPositionTxtWH/2;
+  var speedoWH       = this._speedometerProperty.edgeRadius*2,
+  speedNobeTop       = this._speedometerProperty.edgeRadius - this._speedometerProperty.speedNobeH/2,
+  speedNobeAngle     = this._speedometerProperty.initDeg,
+  speedPositionTxtTL = this._speedometerProperty.edgeRadius - this._speedometerProperty.speedPositionTxtWH/2;
   
-  var cssIdSelector = '#' + this.speedometerProperty.id;
+  var cssIdSelector = '#' + this._speedometerProperty.id;
   var tempStyleVar = [
     cssIdSelector + '.speedometer{',
       'width  :'+ speedoWH + 'px;',
       'height :'+ speedoWH + 'px;',
     '}',
     cssIdSelector + ' .speedNobe{',
-      'height            :'+ this.speedometerProperty.speedNobeH + 'px;',
+      'height            :'+ this._speedometerProperty.speedNobeH + 'px;',
       'top               :'+ speedNobeTop + 'px;',
       'transform         :rotate('+speedNobeAngle+'deg);',
       '-webkit-transform :rotate('+speedNobeAngle+'deg);',
@@ -176,53 +176,53 @@ speedometer.prototype._setCssProperty = function() {
       '-o-transform      :rotate('+speedNobeAngle+'deg);',
     '}',
     cssIdSelector + ' .speedPosition{',
-      'width  :'+this.speedometerProperty.speedPositionTxtWH + 'px;',
-      'height :'+this.speedometerProperty.speedPositionTxtWH + 'px;',
+      'width  :'+this._speedometerProperty.speedPositionTxtWH + 'px;',
+      'height :'+this._speedometerProperty.speedPositionTxtWH + 'px;',
       'top  :'+speedPositionTxtTL + 'px;',
       'left :'+speedPositionTxtTL + 'px;',
     '}',
     cssIdSelector + ' .speedNobe div{',
-      'width  :'+ this.speedometerProperty.speedoNobeW + 'px;',
-      'left :'+ this.speedometerProperty.speedoNobeL + 'px;',
+      'width  :'+ this._speedometerProperty.speedoNobeW + 'px;',
+      'left :'+ this._speedometerProperty.speedoNobeL + 'px;',
     '}',      
     cssIdSelector + ' .nob{',
-      'width  :'+ this.speedometerProperty.nobW + 'px;',
-      'height :'+ this.speedometerProperty.nobH + 'px;',
+      'width  :'+ this._speedometerProperty.nobW + 'px;',
+      'height :'+ this._speedometerProperty.nobH + 'px;',
     '}',
     cssIdSelector + ' .numb{',
-      'width  :'+ this.speedometerProperty.numbW + 'px;',
-      'height :'+ this.speedometerProperty.numbH + 'px;',
+      'width  :'+ this._speedometerProperty.numbW + 'px;',
+      'height :'+ this._speedometerProperty.numbH + 'px;',
     '}',
     cssIdSelector + ' .midNob{',
-      'width  :'+ this.speedometerProperty.midNobW + 'px;',
-      'height :'+ this.speedometerProperty.midNobH + 'px;',
+      'width  :'+ this._speedometerProperty.midNobW + 'px;',
+      'height :'+ this._speedometerProperty.midNobH + 'px;',
     '}',
 
     //Colors
     cssIdSelector + '.speedometer{',
-      'background:'+ this.speedometerProperty.bgColor +';',
+      'background:'+ this._speedometerProperty.bgColor +';',
     '}',
       cssIdSelector + '.speedometer .speedPosition{',
-      'background:'+ this.speedometerProperty.speedValBGColor +';',
-      'color:'+ this.speedometerProperty.speedValTxtColor +';',
-      'box-shadow: 0 0 3px 3px ' + this.speedometerProperty.speedValBGColor + ';',
+      'background:'+ this._speedometerProperty.speedValBGColor +';',
+      'color:'+ this._speedometerProperty.speedValTxtColor +';',
+      'box-shadow: 0 0 3px 3px ' + this._speedometerProperty.speedValBGColor + ';',
     '}',
     cssIdSelector + '.speedometer .speedNobe div{',
-      'background:'+ this.speedometerProperty.speedArrowColor +';',
+      'background:'+ this._speedometerProperty.speedArrowColor +';',
     '}',
     cssIdSelector + '.speedometer .nob{',
-      'background:'+ this.speedometerProperty.nobNumbColor +';',
-      'box-shadow: 0 0 2px 1px' + this.speedometerProperty.nobNumbColor +';',
+      'background:'+ this._speedometerProperty.nobNumbColor +';',
+      'box-shadow: 0 0 2px 1px' + this._speedometerProperty.nobNumbColor +';',
     '}',
     cssIdSelector + '.speedometer .numb{',
-      'color:'+ this.speedometerProperty.nobNumbColor +';',
+      'color:'+ this._speedometerProperty.nobNumbColor +';',
     '}',
     cssIdSelector + '.speedometer .nob.danger{',
-      'background:'+ this.speedometerProperty.dangerColor +';',
-      'box-shadow: 0 0 2px 1px ' + this.speedometerProperty.dangerColor +';',
+      'background:'+ this._speedometerProperty.dangerColor +';',
+      'box-shadow: 0 0 2px 1px ' + this._speedometerProperty.dangerColor +';',
     '}',
     cssIdSelector + '.speedometer .numb.danger{',
-      'color:'+ this.speedometerProperty.dangerColor +';',
+      'color:'+ this._speedometerProperty.dangerColor +';',
     '}',
 
   ].join('');
@@ -237,38 +237,36 @@ speedometer.prototype._setCssProperty = function() {
 };
 
 speedometer.prototype._createIndicators = function(){
-  var divDeg = this.speedometerProperty.maxDeg/this.noOfDev,
+  var divDeg = this._speedometerProperty.maxDeg/this._noOfDev,
   induCatorLinesPosLeft,induCatorLinesPosTop,induCatorNumbPosLeft,induCatorNumbPosTop,
   envelopeElm = this.elm;
 
-  for(var i=0; i<=this.noOfDev; i++) {
-    var curDig = this.speedometerProperty.initDeg + i*divDeg;
-    var curIndVal = i*this.speedometerProperty.divFact;
-    var dangCls = "";
-    if(curIndVal >= this.speedometerProperty.dangerLevel){
-      dangCls = "danger";
-    }   
-    var induCatorLinesPosY = this.speedometerProperty.indicatorRadius * Math.cos( 0.01746 * curDig);
-    var induCatorLinesPosX = this.speedometerProperty.indicatorRadius * Math.sin( 0.01746 * curDig);
+  for(var i=0; i<=this._noOfDev; i++) {
+    var curDig = this._speedometerProperty.initDeg + i*divDeg;
+    var curIndVal = i*this._speedometerProperty.divFact;
+    var dangCls = curIndVal >= this._speedometerProperty.dangerLevel ? "danger" : "";
     
-    var induCatorNumbPosY = this.speedometerProperty.indicatorNumbRadius * Math.cos( 0.01746 * curDig);
-    var induCatorNumbPosX = this.speedometerProperty.indicatorNumbRadius * Math.sin( 0.01746 * curDig);
+    var induCatorLinesPosY = this._speedometerProperty.indicatorRadius * Math.cos( 0.01746 * curDig);
+    var induCatorLinesPosX = this._speedometerProperty.indicatorRadius * Math.sin( 0.01746 * curDig);
     
-    induCatorNumbPosLeft = (this.speedometerProperty.edgeRadius - induCatorNumbPosX) - (this.speedometerProperty.numbW/2);
-    induCatorNumbPosTop  = (this.speedometerProperty.edgeRadius - induCatorNumbPosY) - (this.speedometerProperty.numbH/2);
+    var induCatorNumbPosY = this._speedometerProperty.indicatorNumbRadius * Math.cos( 0.01746 * curDig);
+    var induCatorNumbPosX = this._speedometerProperty.indicatorNumbRadius * Math.sin( 0.01746 * curDig);
+    
+    induCatorNumbPosLeft = (this._speedometerProperty.edgeRadius - induCatorNumbPosX) - (this._speedometerProperty.numbW/2);
+    induCatorNumbPosTop  = (this._speedometerProperty.edgeRadius - induCatorNumbPosY) - (this._speedometerProperty.numbH/2);
 
     var nob, numb;
 
-    var isSuperNob = i%this.speedometerProperty.noOfSmallDiv === 0; 
+    var isSuperNob = i%this._speedometerProperty.noOfSmallDiv === 0; 
 
     if(isSuperNob){
-      induCatorLinesPosLeft = (this.speedometerProperty.edgeRadius - induCatorLinesPosX )-2;
-      induCatorLinesPosTop  = (this.speedometerProperty.edgeRadius - induCatorLinesPosY)-10;
-      induCatorNumbPosLeft = (this.speedometerProperty.edgeRadius - induCatorNumbPosX) - (this.speedometerProperty.numbW/2);
-      induCatorNumbPosTop  = (this.speedometerProperty.edgeRadius - induCatorNumbPosY) - (this.speedometerProperty.numbH/2);
+      induCatorLinesPosLeft = (this._speedometerProperty.edgeRadius - induCatorLinesPosX )-2;
+      induCatorLinesPosTop  = (this._speedometerProperty.edgeRadius - induCatorLinesPosY)-10;
+      induCatorNumbPosLeft = (this._speedometerProperty.edgeRadius - induCatorNumbPosX) - (this._speedometerProperty.numbW/2);
+      induCatorNumbPosTop  = (this._speedometerProperty.edgeRadius - induCatorNumbPosY) - (this._speedometerProperty.numbH/2);
     } else {
-      induCatorLinesPosLeft = (this.speedometerProperty.edgeRadius - induCatorLinesPosX )-(this.speedometerProperty.midNobH/2);
-      induCatorLinesPosTop = (this.speedometerProperty.edgeRadius - induCatorLinesPosY)-(this.speedometerProperty.midNobW/2);
+      induCatorLinesPosLeft = (this._speedometerProperty.edgeRadius - induCatorLinesPosX )-(this._speedometerProperty.midNobH/2);
+      induCatorLinesPosTop = (this._speedometerProperty.edgeRadius - induCatorLinesPosY)-(this._speedometerProperty.midNobW/2);
     }
 
     nob = this._createElm({
@@ -288,8 +286,7 @@ speedometer.prototype._createIndicators = function(){
       html: isSuperNob ? String(curIndVal) : '' // mid nob does not have text
     });
 
-
-    this.speedNobNumbHolder.push({
+    this._speedNobNumbHolder.push({
       nob  : nob,
       numb : numb
     });
@@ -300,7 +297,7 @@ speedometer.prototype._createIndicators = function(){
   }
   
   // Speed pointer arrow 
-  this.speedPointerArrow = this._createElm({
+  this._speedPointerArrow = this._createElm({
     elmType: 'div',
     attrs: {
       class: 'speedNobe'
@@ -309,39 +306,39 @@ speedometer.prototype._createIndicators = function(){
   });
 
   // Speed value indicator at the center
-  this.speedValueInNumeric = this._createElm({
+  this._speedValueInNumeric = this._createElm({
     elmType: 'div',
     attrs: {
       class: 'speedPosition'
     }
   });
 
-  envelopeElm.append(this.speedPointerArrow);
-  envelopeElm.append(this.speedValueInNumeric);
+  envelopeElm.append(this._speedPointerArrow);
+  envelopeElm.append(this._speedValueInNumeric);
   
 };
 
 speedometer.prototype.setPosition = function (speed){   
 
-  if(speed > this.speedometerProperty.maxVal){
-    speed = this.speedometerProperty.maxVal;
+  if(speed > this._speedometerProperty.maxVal){
+    speed = this._speedometerProperty.maxVal;
   }
   if(speed < 0 || isNaN(speed)){
     speed = 0;
   }
-  var speedInDeg = (this.speedometerProperty.maxDeg/this.speedometerProperty.maxVal)*speed + this.speedometerProperty.initDeg;
+  var speedInDeg = (this._speedometerProperty.maxDeg/this._speedometerProperty.maxVal)*speed + this._speedometerProperty.initDeg;
   
   // Set Speed arrow indigator position
-  this.speedPointerArrow.style.transform = 'rotate('+speedInDeg+'deg)';
+  this._speedPointerArrow.style.transform = 'rotate('+speedInDeg+'deg)';
   
   // Set Speed value at the center of speedometer
-  var centerVal = speed *  this.speedometerProperty.multiplier;
-  this.speedValueInNumeric.innerHTML = centerVal + "<br />" + this.speedometerProperty.gagueLabel;
+  var centerVal = speed *  this._speedometerProperty.multiplier;
+  this._speedValueInNumeric.innerHTML = centerVal + "<br />" + this._speedometerProperty.gagueLabel;
 
   // Set indicator nob and number brightness value
-  for(var i=0; i<=this.noOfDev; i++){
-    var speedNobNumb = this.speedNobNumbHolder[i];
-    if(speed >= i*this.speedometerProperty.divFact){
+  for(var i=0; i<=this._noOfDev; i++){
+    var speedNobNumb = this._speedNobNumbHolder[i];
+    if(speed >= i*this._speedometerProperty.divFact){
       this._addClass(speedNobNumb.nob, 'bright');
       this._addClass(speedNobNumb.numb, 'bright');
     }else{
