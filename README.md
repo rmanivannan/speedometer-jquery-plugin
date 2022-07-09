@@ -26,6 +26,9 @@ Demo URL: http://rmanivannan.github.io/demos/speedometer-reusable/
     
     document.getElementById('speedometer-1').innerHTML = '';
     document.getElementById('speedometer-1').append(speedoMeter1.elm);
+    
+    // Change Speed Value
+    speedoMeter1.setPosition(40);
 ```
 
 ### Example Usage
