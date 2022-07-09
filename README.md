@@ -6,7 +6,7 @@ This component meant to create the speedometer with various divisions and start 
 Demo URL: http://rmanivannan.github.io/demos/speedometer-reusable/
 
 ## How to add this component in your app?
-1] Add `speedometer.js` & `speedometer.css` into your project js and css folder.
+1] Add `speedometer.js` & `speedometer.css` into your project js and css folder & link to your HTML.
 
 2] Add the `<div id="speedometer-1"></div>` on to your html file with required ID attributs
 
