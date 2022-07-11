@@ -212,7 +212,7 @@ speedometer.prototype._setCssProperty = function() {
     '}',
     cssIdSelector + '.speedometer .nob{',
       'background:'+ this._speedometerProperty.nobNumbColor +';',
-      'box-shadow: 0 0 2px 1px' + this._speedometerProperty.nobNumbColor +';',
+      'box-shadow: 0 0 2px 1px ' + this._speedometerProperty.nobNumbColor +';',
     '}',
     cssIdSelector + '.speedometer .numb{',
       'color:'+ this._speedometerProperty.nobNumbColor +';',
